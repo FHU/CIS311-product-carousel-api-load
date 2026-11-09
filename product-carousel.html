@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closeout Shelves</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="product-carousel.css">
+</head>
+<body>
+<main>
+  <header class="page-head">
+    <h1>This week's closeout deals</h1>
+    <p>Case-pack pricing on short-dated and overstock groceries. Scroll each shelf or use the arrows.</p>
+  </header>
+
+  <div id="status" class="status" role="alert" hidden>
+    <div>
+      <p class="status-title">We couldn't load the products.</p>
+      <p class="status-detail"></p>
+    </div>
+    <button class="retry" type="button">Try again</button>
+  </div>
+
+  <div id="shelves" aria-live="polite"></div>
+</main>
+
+<!-- One shelf (a category row). JavaScript clones this for each category. -->
+<template id="shelf-template">
+  <section class="shelf">
+    <header class="shelf-head">
+      <h2></h2>
+      <p class="count"></p>
+    </header>
+    <div class="carousel at-start">
+      <button class="nav prev" type="button" aria-label="Previous products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <ul class="track" tabindex="0"></ul>
+      <button class="nav next" type="button" aria-label="Next products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+</template>
+
+<!-- One product card. Each field maps to a column in the CSV. -->
+<template id="card-template">
+  <li class="card">                           <!-- data-product-id: product_id -->
+    <div class="media">
+      <img src="" alt="" loading="lazy">      <!-- image_url, product_name -->
+      <span class="storage"></span>           <!-- storage_type -->
+    </div>
+    <div class="body">
+      <p class="pack"></p>                    <!-- package_size -->
+      <h3 class="name"><a href=""></a></h3>   <!-- product_name -->
+      <p class="price">
+        <span class="amount"></span>          <!-- price -->
+        <span class="unit"></span>            <!-- unit_price -->
+      </p>
+      <p class="date"></p>                    <!-- best_by_date / date_label -->
+      <button class="add" type="button">Add to cart</button>
+    </div>
+  </li>
+</template>
+
+<script src="product-carousel.js"></script>
+</body>
+</html>
