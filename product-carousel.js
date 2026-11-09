@@ -26,12 +26,11 @@ async function fetchProducts() {
 
   // Ask for JSON. A static file ignores this, but many APIs use it to pick
   // the response format.
-  const res = await fetch(API_URL, {
-    headers: { Accept: 'application/json' },
-  });
-  if (!res.ok) throw new Error(`The server responded ${res.status} ${res.statusText}.`);
+  //TODO
 
-  const data = await res.json();
+  //if (!res.ok) throw new Error(`The server responded ${res.status} ${res.statusText}.`);
+
+  //TODO
   if (!Array.isArray(data)) throw new Error('The response was not a list of products.');
   
   // Clean up each product, keeping only ones with a name and a valid price.
